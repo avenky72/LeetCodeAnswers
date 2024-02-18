@@ -1,3 +1,4 @@
+#Maximum Product of Two Elements in an Array
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
         maxi = 0
