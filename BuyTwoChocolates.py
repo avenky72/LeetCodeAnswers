@@ -1,3 +1,4 @@
+#2706 Buy Two Chocolates
 class Solution:
     def buyChoco(self, prices: List[int], money: int) -> int:
         mon = money
