@@ -7,17 +7,15 @@ class Solution(object):
         if len(nums) == 0:
             return 0
 
-        num = set(sorted(nums))
-        print num
-        length = 0
-        count = 0
-        
-        for i in num:
-            if (i-1) not in num:
-                length = max(count, length)
+        nums = list(set(nums))
+        nums.sort()
+        count = 1
+        longest = 1
+
+        for i in range(1, len(nums)):
+            if nums[i] == nums[i-1] + 1:
+                count += 1
+                longest = max(longest, count)
+            else:
                 count = 1
-                while (i+1) in num:
-                    count += 1
-                    i+=1
-        length = max(count, length)
-        return length
+        return longest
