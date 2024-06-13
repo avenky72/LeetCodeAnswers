@@ -1,12 +1,9 @@
 #2706 Buy Two Chocolates
 class Solution:
     def buyChoco(self, prices: List[int], money: int) -> int:
-        mon = money
         prices.sort()
-        for i in prices:
-            for j in prices[i:len(prices)]:
-                if (mon - (i+j)) >= 0:
-                    mon -= (i+j)
-                    return mon
-            return mon
-        return mon
+        if (prices[0] + prices[1]) > money:
+            return money
+        else:
+            money = money - (prices[0] + prices[1])
+            return money
