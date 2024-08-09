@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('checkout cocos server code ') {
+            steps {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'jenkinstoken', url: 'https://github.com/mkorpusik/coco-server.git']])
+            }
+        }
+        stage('compile code ') {
+            steps {
+                script {
+                sh '''
+                virtualenv env
+                . ./env/bin/activate
+                pip install -r requirements.txt
+                pip install -e .
+                docker compose --profile dev up -d
+                python -m coco_service
+                
+                
+                '''
+                }
+                
+            }
+        }
+    }
+}
