@@ -16,7 +16,6 @@ class Solution:
             c_next = curr.next
             temp = ListNode(gcd(curr.val, c_next.val), c_next)
             curr.next = temp
-            temp.next = c_next
             curr = c_next
         
         return head
