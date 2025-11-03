@@ -29,13 +29,16 @@ class Solution:
         i, j = place, place
         
         if place is not None:
-            while (i > 0 and j < len(nums)-1):
-                if (nums[i-1] != target and nums[j+1] != target):
-                    break
-                if nums[i-1] == target:
+            while (i > 0 or j < len(nums)-1):
+                if (i > 0 and nums[i-1] == target):
                     i -= 1
-                if nums[j+1] == target:
+                if (j < len(nums)-1 and nums[j+1] == target):
                     j += 1
+                
+                if not (i > 0 and nums[i-1] == target) and not (j < len(nums)-1 and nums[j+1] == target):
+                    break
+        
+                    
             found = [i, j]
             return found
         
